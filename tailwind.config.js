@@ -32,8 +32,13 @@ module.exports = {
       },
       maxWidth: {
         '8xl': '1110px',
+      },
+      fontSize: {
+        sm: '0.875rem'
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }

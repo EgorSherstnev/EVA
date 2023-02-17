@@ -92,11 +92,14 @@ return (
                             Войти
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/signup" className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3" >
+                            Зарегистрироваться
+                        </Link>
+                    </li>
+
 
                    </ul>
-
-                    
-
                 </nav>
 
             </div>
