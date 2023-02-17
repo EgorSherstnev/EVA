@@ -1,9 +1,10 @@
 import React from "react";
+import Header from "../partials/Header";
 
 function Home() {
     return (
-        <div>
-            Home page Eva
+        <div >
+           <Header />
         </div>
     );
 }
