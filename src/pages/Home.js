@@ -2,6 +2,7 @@ import React from "react";
 import FeaturesBlocks from "../partials/FeaturesBlocks";
 import Header from "../partials/Header";
 import HeroHome from "../partials/HeroHome";
+import OurProjects from "../partials/OurProjects";
 
 function Home() {
     return (
@@ -14,6 +15,7 @@ function Home() {
                 {/*  Page sections */}
                 <HeroHome />
                 <FeaturesBlocks />
+                <OurProjects />
             </main>
         </div>
     );
