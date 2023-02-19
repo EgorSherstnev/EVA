@@ -1,4 +1,5 @@
 import React from "react";
+import FeaturesBlocks from "../partials/FeaturesBlocks";
 import Header from "../partials/Header";
 import HeroHome from "../partials/HeroHome";
 
@@ -12,6 +13,7 @@ function Home() {
             <main className="grow">
                 {/*  Page sections */}
                 <HeroHome />
+                <FeaturesBlocks />
             </main>
         </div>
     );
