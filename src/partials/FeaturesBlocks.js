@@ -2,8 +2,8 @@ import React from 'react';
 
 function FeaturesBlocks() {
   return (
-    <section>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+    <section className='-mt-10 '>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 bg-current opacity-75">
         <div className="py-12 md:py-20">
 
           {/* Items */}
