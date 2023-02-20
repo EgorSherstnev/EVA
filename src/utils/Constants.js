@@ -1,0 +1,1 @@
+import { ReactComponent as Projects } from '../images/herohome/hhimage.jpg';
