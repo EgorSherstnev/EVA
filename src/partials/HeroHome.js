@@ -14,7 +14,7 @@ function HeroHome() {
           data-aos-delay="400"
         >
           <div className="max-w-full brightness-50 " width="564" height="552" viewBox="0 0 564 552" fill="none" >
-            <img className="mx-auto " src={HHimage}  height="504" alt="Hero" />
+            <img className="mx-auto opacity-50" src={HHimage}  height="504" alt="Hero" />
           </div>
         </div>
 
@@ -22,8 +22,8 @@ function HeroHome() {
         <div className="relative pt-32 pb-10 md:pt-40 md:pb-16">
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h1 mb-4  text-gray-400 text-6xl" data-aos="fade-up">
-               Плагин EVA
+            <h1 className="h1 mb-4  text-gray-50 text-6xl" data-aos="fade-up">
+               Плагин EVA 
             </h1>
             <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
             Плагин создан для эффективной работы в Revit проектировщиков раздела ЭОМ. <br/>Плагин автоматизирует процесс создания схем, расчеты нагрузок, оформление <br/>планов при использовании цепей.
