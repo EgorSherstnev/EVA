@@ -3,6 +3,7 @@ import FeaturesBlocks from "../partials/FeaturesBlocks";
 import Header from "../partials/Header";
 import HeroHome from "../partials/HeroHome";
 import OurProjects from "../partials/OurProjects";
+import WriteEmail from "../partials/WriteEmail";
 
 function Home() {
     return (
@@ -16,6 +17,7 @@ function Home() {
                 <HeroHome />
                 <FeaturesBlocks />
                 <OurProjects />
+                <WriteEmail />
             </main>
         </div>
     );
