@@ -3,6 +3,7 @@ import FeaturesBlocks from "../partials/FeaturesBlocks";
 import Header from "../partials/Header";
 import HeroHome from "../partials/HeroHome";
 import OurProjects from "../partials/OurProjects";
+import PluginProfile from "../partials/PluginProfile";
 import WriteEmail from "../partials/WriteEmail";
 
 function Home() {
@@ -18,6 +19,7 @@ function Home() {
                 <FeaturesBlocks />
                 <OurProjects />
                 <WriteEmail />
+                <PluginProfile />
             </main>
         </div>
     );
