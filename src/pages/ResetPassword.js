@@ -26,7 +26,7 @@ function ResetPassword() {
 
               {/* Page header */}
               <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                <h1 className="h1 mb-4 text-gray-200">Забыли пароль?</h1>
+                <h1 className="h1 mb-4 mt-10 text-gray-200">Забыли пароль?</h1>
                 <p className="text-xl text-gray-400">Введите электронную почту от учетной записи, на которую вам будет выслана ссылка для восстановления пароля</p>
               </div>
 

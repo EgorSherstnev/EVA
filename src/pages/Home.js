@@ -30,8 +30,9 @@ function Home() {
                 <OurPartners />
                 <ReviewsAboutUs />
                 <DownloadPlugin />
-                <Footer />
             </main>
+             {/*  Site footer */}
+            <Footer />
         </div>
     );
 }

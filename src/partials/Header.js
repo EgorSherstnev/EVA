@@ -41,7 +41,7 @@ return (
                 <div className="shrink-0 mr-4">
                     {/* Logo */}
                     <Link to="/" className="block " aria-label="EVA" >
-                        <img src={LogoIcon} width="150" height="150" alt="Logo Icon" />
+                        <img src={LogoIcon} width="150" height="150" alt="Logo Icon"/>
                     </Link>
                 </div>
 
