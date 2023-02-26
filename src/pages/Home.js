@@ -6,6 +6,7 @@ import OurProjects from "../partials/OurProjects";
 import PluginProfile from "../partials/PluginProfile";
 import WriteEmail from "../partials/WriteEmail";
 import FaQ from "../partials/FaQ";
+import OurPartners from "../partials/OurPartners";
 
 function Home() {
     return (
@@ -22,6 +23,7 @@ function Home() {
                 <WriteEmail />
                 <PluginProfile />
                 <FaQ />
+                <OurPartners />
             </main>
         </div>
     );
