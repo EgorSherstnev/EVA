@@ -8,7 +8,9 @@ import WriteEmail from "../partials/WriteEmail";
 import FaQ from "../partials/FaQ";
 import OurPartners from "../partials/OurPartners";
 import ReviewsAboutUs from "../partials/ReviewsAboutUs";
+import DownloadPlugin from "../partials/DownloadPlugin";
 import Footer from "../partials/Footer";
+
 
 function Home() {
     return (
@@ -27,6 +29,7 @@ function Home() {
                 <FaQ />
                 <OurPartners />
                 <ReviewsAboutUs />
+                <DownloadPlugin />
                 <Footer />
             </main>
         </div>
