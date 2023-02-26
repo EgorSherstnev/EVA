@@ -23,6 +23,7 @@ function Home() {
                 <WriteEmail />
                 <PluginProfile />
                 <FaQ />
+                <Footer />
             </main>
         </div>
     );
