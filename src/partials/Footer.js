@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import LogoIcon from '../images/Logo.svg';
+import LogoTelegram from '../images/footer/icons8-telegram.svg';
+import LogoYouTube from '../images/footer/icons8-youtube-play.svg';
 
 function Footer() {
     return (
@@ -54,7 +56,30 @@ function Footer() {
 
                             {/* 4th block */}
                             <div className='text-sm'>
-                            <h6 className='text-gray-200 font-medium mb-1'></h6>
+                            <ul>
+                                <li className='text-gray-200 font-medium mb-1'>
+                                    <a href="tel:+79180000000">+79180000000</a>
+                                </li>
+                                <li className='text-gray-200 font-medium mb-1'>
+                                    <a href="tel:+79180000000">+79180000000</a>
+                                </li>
+                                <li className='mb-1 text-gray-600'>Мы в соцсетях</li>
+                            </ul>
+                             {/* Social links */}
+                             <ul className='flex mb-4 md:order-1 md:ml-4 md:mb-0'>
+                                <li>
+                                    <Link to='#' className='flex justify-center items-center' aria-label='YouTube'>
+                                        <img  src={LogoYouTube}/>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to='#' className='flex justify-center items-center' aria-label='Telegram'>
+                                        <img  src={LogoTelegram}/>
+                                    </Link>
+                                </li>
+
+                             </ul>
+                            
                             </div>
                         </div>
                     </div>
