@@ -66,8 +66,8 @@ function Footer() {
                                 <li className='mb-1 text-gray-600'>Мы в соцсетях</li>
                             </ul>
                              {/* Social links */}
-                             <ul className='flex mb-4 md:order-1 md:ml-4 md:mb-0'>
-                                <li>
+                             <ul className='flex mb-4 md:order-1 md:ml-0 md:mb-0'>
+                                <li className='pr-2'>
                                     <Link to='#' className='flex justify-center items-center' aria-label='YouTube'>
                                         <img  src={LogoYouTube}/>
                                     </Link>
