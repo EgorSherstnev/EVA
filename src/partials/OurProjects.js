@@ -12,7 +12,7 @@ function OurProjects() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 mb-4 text-4xl text-gray-400">НАШИ САМЫЕ БОЛЬШИЕ ПРОЕКТЫ</h2>
+            <h2 className="h2 mb-4 text-4xl text-gray-200">НАШИ САМЫЕ БОЛЬШИЕ ПРОЕКТЫ</h2>
           </div>
 
           {/* Items */}

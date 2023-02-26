@@ -14,7 +14,7 @@ function PluginProfile() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 mb-4 text-4xl text-gray-50">Для каких объектов подходит плагин?</h2>
+            <h2 className="h2 mb-4 text-4xl text-gray-50 uppercase">Для каких объектов подходит плагин?</h2>
           </div>
 
           {/* Items */}

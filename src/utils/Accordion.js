@@ -2,7 +2,33 @@ import React, {useState} from "react";
 import IconR from "../images/Accordion/icon-right.png";
 import IconD from "../images/Accordion/icon-down.png";
 
+const Accordion = ({title, content}) => {
+    const [isActive, setIsActive] = useState(false);
 
+    return (
+        <React.Fragment>
+            <div className="accordion max-w-2xl my-8 mx-auto">
+                <div className="accordion-item">
+                    <div 
+                        className="accordion-title text-gray-200 flex items-center text-2xl cursor-pointer font-medium hover:text-indigo-500"
+                        onClick={() => setIsActive(!isActive)}
+                    >
+                        {isActive ? <img className="pr-2" src={IconD}/> : <img className="pr-2" src={IconR} />} 
+                        <div>{title}</div>
+                    
+                    </div>
+                    {isActive && <div className="accordion-content text-gray-400 flex items-strech px-6 text-xl pb-6">{content}</div>}
+                </div>
+            </div>
+        </React.Fragment>
+    )
+}
+
+export default Accordion;
+
+
+
+/*
 const Accordion = ({items}) => {
     const [activeIndex,setActiveIndex] = useState(null);
 
@@ -35,5 +61,5 @@ const Accordion = ({items}) => {
 };
 
 export default Accordion;
-
+*/
 
