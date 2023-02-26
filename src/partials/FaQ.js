@@ -32,7 +32,7 @@ function FaQ() {
                     </div>
                     {/* Accordion */}
                     <div>
-                       <Accordion items={items}/>
+                       <Accordion />
                     </div>
 
                 </div>

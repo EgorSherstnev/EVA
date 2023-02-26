@@ -2,7 +2,34 @@ import React, {useState} from "react";
 import IconR from "../images/Accordion/icon-right.png";
 import IconD from "../images/Accordion/icon-down.png";
 
+const Accordion = () => {
+    const accordionData = {
+        title:'Обучающие уроки',
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, temporibu'
+    };
 
+    const {title, content} = accordionData;
+
+    return (
+        <React.Fragment>
+            <div className="accordion max-w-2xl my-8 mx-auto">
+                <div className="accordion-item">
+                    <div className="accordion-title text-gray-200 flex flex-row justify-between cursor-pointer">
+                        <div>{title}</div>
+                        <i><img src={IconR}/></i>
+                    </div>
+                    <div className="accordion-content text-gray-400">{content}</div>
+                </div>
+            </div>
+        </React.Fragment>
+    )
+}
+
+export default Accordion;
+
+
+
+/*
 const Accordion = ({items}) => {
     const [activeIndex,setActiveIndex] = useState(null);
 
@@ -35,5 +62,5 @@ const Accordion = ({items}) => {
 };
 
 export default Accordion;
-
+*/
 
