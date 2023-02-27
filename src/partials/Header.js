@@ -41,7 +41,7 @@ return (
                 <div className="shrink-0 mr-4">
                     {/* Logo */}
                     <Link to="/" className="block " aria-label="EVA" >
-                        <img src={LogoIcon} width="150" height="150" alt="Logo Icon" />
+                        <img src={LogoIcon} width="150" height="150" alt="Logo Icon"/>
                     </Link>
                 </div>
 
@@ -73,13 +73,13 @@ return (
                         <Dropdown title="Support">
                         {/* 2nd level: hover */}
                         <li>
-                            <Link to="/contact" className="font-medium text-sm text-gray-400 hover:text-purple-600 flex py-2 px-4 leading-tight">Contact us</Link>
+                            <Link to="/contact" className="font-medium text-sm text-gray-400 hover:text-purple-600 hover:bg-gray-700 flex py-2 px-4 leading-tight">Contact us</Link>
                         </li>
                         <li>
-                            <Link to="/help" className="font-medium text-sm text-gray-400 hover:text-purple-600 flex py-2 px-4 leading-tight">Help center</Link>
+                            <Link to="/help" className="font-medium text-sm text-gray-400 hover:text-purple-600 flex py-2 px-4 leading-tight hover:bg-gray-700 ">Help center</Link>
                         </li>
                         <li>
-                            <Link to="/404" className="font-medium text-sm text-gray-400 hover:text-purple-600 flex py-2 px-4 leading-tight">404</Link>
+                            <Link to="/404" className="font-medium text-sm text-gray-400 hover:text-purple-600 flex py-2 px-4 leading-tight hover:bg-gray-700 ">404</Link>
                         </li>
                          </Dropdown>
 
