@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import DownloadIcon from "../images/downloadplugin/downloadicon.svg"
+import { downloadRevit23 } from "../http/downloadAPI";
 
 function DownloadPlugin() {
+  const [downloadedFile, setDownloadedFile] = useState(null);
+
+  const handleDownload = async () => {
+    try {
+      const response = await downloadRevit23()
+      const blob = new Blob([response.data], {type: 'application/zip'})
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'revit23.zip';
+      a.click()
+      setDownloadedFile(url)
+    } catch (e) {
+      alert('Ошибка при загрузке файла:',e)
+    }
+    
+  }
+
    return (
       <section>
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -32,12 +51,15 @@ function DownloadPlugin() {
 
               {/* CTA form */}
               <form className="w-full lg:w-1/2">
-                <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none">
-                  <a className="btn text-purple-600 bg-purple-100 hover:bg-white shadow" href="#0">
+                <button 
+                  onClick={handleDownload}
+                  className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none"
+                >
+                  <a className="btn text-purple-600 bg-purple-100 hover:bg-white shadow" href={downloadedFile} download="revit23.zip">
                   <img className=" mx-2 " src={DownloadIcon} width="32" height="32"  alt="DownloadIcon" />
                      Скачать из облака
                   </a>
-                </div>
+                </button>
                 {/* Success message */}
                 {/* <p className="text-center lg:text-left lg:absolute mt-2 opacity-75 text-sm">Thanks for subscribing!</p> */}
               </form>
