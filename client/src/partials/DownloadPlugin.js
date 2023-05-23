@@ -12,7 +12,7 @@ function DownloadPlugin() {
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'revit23.zip';
+      a.download = 'EVARevit23.zip';
       a.click()
       setDownloadedFile(url)
     } catch (e) {
@@ -55,7 +55,7 @@ function DownloadPlugin() {
                   onClick={handleDownload}
                   className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none"
                 >
-                  <a className="btn text-purple-600 bg-purple-100 hover:bg-white shadow" href={downloadedFile} download="revit23.zip">
+                  <a className="btn text-purple-600 bg-purple-100 hover:bg-white shadow" href={downloadedFile} download="EVARevit23.zip">
                   <img className=" mx-2 " src={DownloadIcon} width="32" height="32"  alt="DownloadIcon" />
                      Скачать из облака
                   </a>
