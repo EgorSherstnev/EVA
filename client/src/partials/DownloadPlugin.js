@@ -1,24 +1,38 @@
 import React, { useState } from "react";
-import DownloadIcon from "../images/downloadplugin/downloadicon.svg"
-import { downloadRevit23 } from "../http/downloadAPI";
+import DownloadIcon from "../images/downloadplugin/downloadicon.svg";
+import { downloadRevit23, downloadTest } from "../http/downloadAPI";
 
 function DownloadPlugin() {
   const [downloadedFile, setDownloadedFile] = useState(null);
 
-  const handleDownload = async () => {
+  const handleDownloadRevit23 = async () => {
     try {
-      const response = await downloadRevit23()
-      const blob = new Blob([response.data], {type: 'application/zip'})
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement('a');
+      const response = await downloadRevit23();
+      const url = window.URL.createObjectURL(new Blob([response]));
+      const a = document.createElement("a");
       a.href = url;
-      a.download = 'EVARevit23.zip';
-      a.click()
-      setDownloadedFile(url)
+      a.download = "EVARevit23.zip";
+      a.click();
+      window.URL.revokeObjectURL(url);
+      setDownloadedFile(url);
     } catch (e) {
-      alert('Ошибка при загрузке файла:',e)
+      alert(e.response.data.message);
     }
-    
+  };
+
+  const handleDownloadTest = async () => {
+    try {
+      const response = await downloadTest();
+      const url = window.URL.createObjectURL(new Blob([response]));
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Test.txt";
+      a.click();
+      window.URL.revokeObjectURL(url);
+      setDownloadedFile(url);
+    } catch (e) {
+      alert(e.response.data.message);
+    }
   }
 
    return (
@@ -52,12 +66,26 @@ function DownloadPlugin() {
               {/* CTA form */}
               <form className="w-full lg:w-1/2">
                 <button 
-                  onClick={handleDownload}
+                  onClick={(e) => handleDownloadRevit23(e)} download={'Revit23'}
                   className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none"
                 >
-                  <a className="btn text-purple-600 bg-purple-100 hover:bg-white shadow" href={downloadedFile} download="EVARevit23.zip">
+                  <a className="btn text-purple-600 bg-purple-100 hover:bg-white shadow" href="#0" >
                   <img className=" mx-2 " src={DownloadIcon} width="32" height="32"  alt="DownloadIcon" />
                      Скачать из облака
+                  </a>
+                </button>
+                {/* Success message */}
+                {/* <p className="text-center lg:text-left lg:absolute mt-2 opacity-75 text-sm">Thanks for subscribing!</p> */}
+              </form>
+
+              <form className="w-full lg:w-1/2">
+                <button 
+                  onClick={(e) => handleDownloadTest(e)} download={'Revit23'}
+                  className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none"
+                >
+                  <a className="btn text-purple-600 bg-purple-100 hover:bg-white shadow" href="#0" >
+                  <img className=" mx-2 " src={DownloadIcon} width="32" height="32"  alt="DownloadIcon" />
+                     Скачать из облака (test)
                   </a>
                 </button>
                 {/* Success message */}

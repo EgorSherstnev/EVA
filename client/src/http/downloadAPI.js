@@ -1,13 +1,15 @@
 import { $host } from "./index";
 
 export const downloadRevit23 = async () => {
-   try {
-      const response = await $host.get('api/sendfile/revit23', {
-         responseType: 'blob',
-      })
-      return response.data
-   } catch (e) {
-      console.log('Не удалось загрузить файл.', e)
-      return null;
-   }
+   const response = await $host.get('api/sendfile/revit23',{
+      responseType: 'blob',
+   })
+   return response.data
+}
+
+export const downloadTest= async () => {
+   const response = await $host.get('api/sendfile/testDownload',{
+      responseType: 'arraybuffer',
+   })
+   return response.data
 }
