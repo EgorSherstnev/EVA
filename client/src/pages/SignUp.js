@@ -10,16 +10,18 @@ import { setUser, setIsAuth } from '../actions';
 const SignUp = (props) => {
   const { user, setUser, setIsAuth } = props;
   const history = useNavigate() 
+  const [userName, setUserName] = useState('')
+  const [company, setCompany] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const click = async() => {
     try {
-      let data;
-      data = await registration(email, password)
+      let data = await registration(userName, company, email, password)
       setUser(user)
       setIsAuth(true)
       history('/')
+      console.log(data.token)/*УДАЛИТЬ!!!!!!!!!!!!!!*/
     } catch (e) {
       alert(e.response.data.message)
    }
@@ -72,13 +74,29 @@ const SignUp = (props) => {
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
                       <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="full-name">Ваше Имя<span className="text-red-600">*</span></label>
-                      <input id="full-name" type="text" className="form-input w-full text-gray-300" placeholder="ФИО" required />
+                      <input 
+                        id="full-name" 
+                        type="text" 
+                        className="form-input w-full text-gray-300" 
+                        placeholder="ФИО" 
+                        value={userName}
+                        onChange={e => setUserName(e.target.value)}
+                        required 
+                      />
                     </div>
                   </div>
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
                       <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="company-name">Компания <span className="text-red-600">*</span></label>
-                      <input id="company-name" type="text" className="form-input w-full text-gray-300" placeholder="Наименование компании" required />
+                      <input 
+                        id="company-name" 
+                        type="text" 
+                        className="form-input w-full text-gray-300" 
+                        placeholder="Наименование компании" 
+                        value={company}
+                        onChange={e => setCompany(e.target.value)}
+                        required 
+                      />
                     </div>
                   </div>
                   <div className="flex flex-wrap -mx-3 mb-4">

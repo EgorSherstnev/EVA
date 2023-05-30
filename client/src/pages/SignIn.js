@@ -1,11 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { connect } from 'react-redux';
 
 import Header from '../partials/Header';
 import PageIllustration from '../partials/PageIllustration';
+import { login } from "../http/userAPI";
+import { setUser, setIsAuth } from '../actions';
 
+const SignIn = (props) => {
+    const { user, setUser, setIsAuth } = props;
+    const history = useNavigate();
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-function SignIn() {
+    const click = async() => {
+        try {
+            let data;
+            data = await login(email, password)
+            setUser(user)
+            setIsAuth(true)
+            history("/")
+            console.log(data.token)/*УДАЛИТЬ!!!!!!!!!!!!!!!!*/
+        } catch (e) {
+            alert(e.response.data.message)
+        }
+    }
+
     return (
         <div className="flex flex-col min-h-screen overflow-hidden">
             {/* Site header */}
@@ -53,13 +73,29 @@ function SignIn() {
                                     <div className="flex flex-wrap -mx-3 mb-4">
                                         <div className="w-full px-3">
                                             <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email</label>
-                                            <input id="email" type="email" className="form-input w-full text-gray-300" placeholder="you@yourcompany.com" required />
+                                            <input 
+                                                id="email" 
+                                                type="email" 
+                                                className="form-input w-full text-gray-300" 
+                                                placeholder="you@yourcompany.com" 
+                                                value={email}
+                                                onChange={e => setEmail(e.target.value)}
+                                                required 
+                                            />
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mb-4">
                                         <div className="w-full px-3">
                                             <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="password">Password</label>
-                                            <input id="password" type="password" className="form-input w-full text-gray-300" placeholder="Пароль (не менее 10 символов)" required />
+                                            <input 
+                                                id="password" 
+                                                type="password" 
+                                                className="form-input w-full text-gray-300" 
+                                                placeholder="Пароль (не менее 10 символов)" 
+                                                value={password}
+                                                onChange={e => setPassword(e.target.value)}
+                                                required 
+                                            />
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mb-4">
@@ -75,7 +111,12 @@ function SignIn() {
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mt-6">
                                         <div className="w-full px-3">
-                                            <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Войти</button>
+                                            <button 
+                                                className="btn text-white bg-purple-600 hover:bg-purple-700 w-full"
+                                                onClick={click}
+                                            >
+                                                Войти
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
@@ -95,4 +136,13 @@ function SignIn() {
     );
 }
 
-export default SignIn;
+const mapStateToProps = (state) => ({
+    user: state.auth.user,
+});
+
+const mapDispatchToProps = {
+    setUser,
+    setIsAuth,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
