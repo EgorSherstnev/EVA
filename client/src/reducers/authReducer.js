@@ -8,7 +8,7 @@ const initialState = {
    user: {},
 };
 
-export default function useReducer(state = initialState, action) {
+export default function authReducer(state = initialState, action) {
    switch (action.type) {
       case SET_IS_AUTH:
          return { ...state, isAuth:action.payload };

@@ -9,19 +9,19 @@ import { setUser, setIsAuth } from '../actions';
 
 const SignUp = (props) => {
   const { user, setUser, setIsAuth } = props;
-  const history = useNavigate() 
+  const navigate = useNavigate() 
   const [userName, setUserName] = useState('')
   const [company, setCompany] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const click = async() => {
+  const click = async(e) => {
+    e.preventDefault();
     try {
       let data = await registration(userName, company, email, password)
       setUser(user)
       setIsAuth(true)
-      history('/')
-      console.log(data.token)/*УДАЛИТЬ!!!!!!!!!!!!!!*/
+      navigate('/')
     } catch (e) {
       alert(e.response.data.message)
    }

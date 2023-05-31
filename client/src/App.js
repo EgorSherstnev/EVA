@@ -2,7 +2,7 @@ import React, { useEffect} from "react";
 import { 
     Routes,
     Route,
-    useLocation
+    useLocation,
  } from "react-router-dom";
 
 import 'aos/dist/aos.css';
@@ -35,12 +35,12 @@ function App() {
     }, [location.pathname]); //срабатывает при изменении маршрута
 
     return (
-        <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
-        </Routes>
+            <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
+            </Routes>
     );   
 }
 

@@ -9,18 +9,18 @@ import { setUser, setIsAuth } from '../actions';
 
 const SignIn = (props) => {
     const { user, setUser, setIsAuth } = props;
-    const history = useNavigate();
+    const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const click = async() => {
+    const click = async(e) => {
+        e.preventDefault();
         try {
             let data;
             data = await login(email, password)
             setUser(user)
             setIsAuth(true)
-            history("/")
-            console.log(data.token)/*УДАЛИТЬ!!!!!!!!!!!!!!!!*/
+            navigate("/")
         } catch (e) {
             alert(e.response.data.message)
         }
