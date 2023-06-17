@@ -4,6 +4,7 @@ const uuid = require('uuid')
 const mailService = require('./mailService')
 const { User } = require('../models/models')
 const tokenService = require('./tokenService')
+const UserDto = require('../dtos/user-dto')
 
 class UserService {
    async registration (userName, company, email, password, role) {
@@ -15,7 +16,12 @@ class UserService {
       const activationLink = uuid.v4()
       const user = await User.create({userName, company, email, role, password:hashPassword, activationLink})
       await mailService.sendActivationMail(email, activationLink);
-      const tokens = tokenService.generateTokens()
+
+      const userDto = new UserDto(user)
+      const tokens = tokenService.generateTokens({...userDto})
+      await tokenService.saveToken(userDto.id, tokens.refreshToken)
+
+      return {...tokens, user: userDto}
    }
 }
 
