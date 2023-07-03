@@ -1,7 +1,11 @@
-const ApiError = require("../error/ApiError")
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const { User } = require('../models/models')
+//const ApiError = require("../error/ApiError")
+//const bcrypt = require('bcrypt')
+//const jwt = require('jsonwebtoken')
+//const { User } = require('../models/models')
+const userService = require('../service/userService')
+
+const express = require('express');
+const app = express();
 
 const generateJwt = (id, email, role) => {
    return jwt.sign(
@@ -13,7 +17,16 @@ const generateJwt = (id, email, role) => {
 
 class UserController {
    async registration(req,res,next) {
-      const { userName, company, email, password, role } = req.body
+      try {
+         const { userName, company, email, password, role } = req.body
+         const userData = await userService.registration(userName, company, email, password, role)
+         res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 25 * 60 * 60 * 1000, httpOnly: true})
+         return res.json(userData)
+      } catch(e) {
+         console.log(e)
+      }
+
+      /*const { userName, company, email, password, role } = req.body
       if (!email || !password) {
          return next(ApiError.badRequest('Некорректный email или password'))
       }
@@ -24,11 +37,11 @@ class UserController {
       const hashPassword = await bcrypt.hash(password, 5)
       const user = await User.create({userName, company, email, role, password:hashPassword})
       const token = generateJwt(user.id, user.email, user.role)
-      return res.json({token})
+      return res.json({token})*/
    }
 
    async login(req,res,next) {
-      const {email, password} = req.body
+      /*const {email, password} = req.body
       const user = await User.findOne({where: {email}})
       if (!user) {
          return next(ApiError.internal('Пользователь не найден'))
@@ -38,7 +51,7 @@ class UserController {
          return next(ApiError.internal('Указан неверный пароль'))
       }
       const token = generateJwt(user.id, user.email, user.role)
-      return res.json({token})
+      return res.json({token})*/
    }
 
    async check(req, res, next) {
@@ -56,9 +69,11 @@ class UserController {
 
    async activate(req, res, next) {
       try {
-
+         const activationLink = req.params.link;
+         await userService.activate(activationLink);
+         return res.status(302).redirect(process.env.CLIENT_URL)
       } catch (e) {
-         
+         console.log(e)
       }
    }
    
