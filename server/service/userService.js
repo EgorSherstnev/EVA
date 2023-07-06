@@ -10,7 +10,7 @@ class UserService {
    async registration (userName, company, email, password, role) {
       const candidate = await User.findOne({where: {email}})
       if(candidate) {
-         return next(ApiError.badRequest(`Пользователь с таким почтовым адресом ${email} уже существует`))
+         return ApiError.badRequest(`Пользователь с таким почтовым адресом ${email} уже существует`)
       }
       const hashPassword = await bcrypt.hash(password, 5)
       const activationLink = uuid.v4()
@@ -27,7 +27,7 @@ class UserService {
    async activate(activationLink) {
       const user = await User.findOne({activationLink})
       if (!user) {
-         return next(ApiError.badRequest('Некорректная ссылка активации'))
+         return ApiError.badRequest('Некорректная ссылка активации')
       }
       user.isActivated = true;
       await user.save();

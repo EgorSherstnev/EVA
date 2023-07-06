@@ -1,12 +1,15 @@
 class ApiError extends Error {
-   constructor(status, message) {
+   status;
+   errors;
+
+   constructor(status, message, errors = []) {
       super();
       this.status = status
       this.message = message
    }
 
-   static badRequest(message) {
-      return new ApiError(404,message)
+   static badRequest(message, errors = []) {
+      return new ApiError(404,message,errors)
    }
 
    static internal(message) {
@@ -15,6 +18,10 @@ class ApiError extends Error {
 
    static forbiden(message) {
       return new ApiError(403, message)
+   }
+
+   static UnauthorizedError() {
+      return new ApiError(401, 'Пользователь не авторизован')
    }
 }
 

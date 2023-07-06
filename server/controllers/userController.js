@@ -23,7 +23,7 @@ class UserController {
          res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 25 * 60 * 60 * 1000, httpOnly: true})
          return res.json(userData)
       } catch(e) {
-         console.log(e)
+         next(e)
       }
 
       /*const { userName, company, email, password, role } = req.body
@@ -52,6 +52,12 @@ class UserController {
       }
       const token = generateJwt(user.id, user.email, user.role)
       return res.json({token})*/
+
+      try {
+
+      } catch (e) {
+         next(e)
+      }
    }
 
    async check(req, res, next) {
@@ -63,7 +69,7 @@ class UserController {
       try {
 
       } catch (e) {
-
+         next(e)
       }
    }
 
@@ -73,7 +79,7 @@ class UserController {
          await userService.activate(activationLink);
          return res.status(302).redirect(process.env.CLIENT_URL)
       } catch (e) {
-         console.log(e)
+         next(e)
       }
    }
    
@@ -81,7 +87,7 @@ class UserController {
       try {
 
       } catch (e) {
-         
+         next(e)
       }
    }
 
@@ -89,7 +95,7 @@ class UserController {
       try {
          res.json(['123', '456']);
       } catch (e) {
-         
+         next(e)
       }
    }
 }
