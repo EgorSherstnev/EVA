@@ -6,6 +6,7 @@ class ApiError extends Error {
       super();
       this.status = status
       this.message = message
+      this.errors = errors
    }
 
    static badRequest(message, errors = []) {
