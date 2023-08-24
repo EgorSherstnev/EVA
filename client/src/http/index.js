@@ -10,7 +10,9 @@ $api.interceptors.request.use((config) => {
    return config
 })
 
-export default $api;
+export {
+   $api
+}
 /*const $host = axios.create({
    baseURL: process.env.REACT_APP_API_URL
 })
