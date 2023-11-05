@@ -4,4 +4,4 @@ const IUSER = {
    id: ''
 };
 
-export default AuthResponse;
+export default IUSER;
