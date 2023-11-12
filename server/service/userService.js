@@ -25,7 +25,8 @@ class UserService {
    }
 
    async activate(activationLink) {
-      const user = await User.findOne({activationLink})
+      console.log(`Ссылка ${activationLink} пришла в usersevice`)
+      const user = await User.findOne({where:{activationLink}})
       if (!user) {
          return ApiError.badRequest('Некорректная ссылка активации')
       }
