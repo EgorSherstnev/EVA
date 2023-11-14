@@ -105,6 +105,26 @@ class UserController {
       }
    }
 
+   async resetPassword(req, res, next) {
+      try {
+         const {email} = req.body;
+         await userService.resetPassword(email)
+         return res.status(200).json({ message: 'Письмо для сброса пароля направлено на почту' });
+      } catch (e) {
+         next(e)
+      }
+   }
+
+   async updatePassword(req, res, next) {
+      try {
+         const {password, activationLink} = req.body;
+         await userService.updatePassword(password, activationLink)
+         return res.status(200).json({ message: 'Пароль обновлен' });
+      } catch (e) {
+         next(e)
+      }
+   }
+
    async getUsers(req, res, next) {
       try {
          const users = await userService.getAllUsers();

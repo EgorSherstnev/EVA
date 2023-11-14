@@ -77,7 +77,17 @@ class UserService {
       if (!user) {
          throw ApiError.badRequest(`Пользователь с email: ${email} не найден `)
       }
-      await mailService.sendResetPasswordMail(email, `${process.env.API_URL}/api/user/activate/${activationLink}`); //актуализировать роутинг
+      await mailService.sendResetPasswordMail(email, `${process.env.CLIENT_URL}/update-password/${user.activationLink}`); 
+   }
+
+   async updatePassword (password, activationLink) {
+      const user = await User.findOne({where: {activationLink}})
+      if (!user) {
+         throw ApiError.badRequest(`Пользователь не найден `)
+      }
+      const hashPassword = await bcrypt.hash(password, 5)
+      user.password = hashPassword;
+      await user.save();
    }
 
    async getAllUsers() {
