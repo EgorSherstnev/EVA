@@ -72,6 +72,14 @@ class UserService {
       return {...tokens, user: userDto}
    }
 
+   async resetPassword (email) {
+      const user = await User.findOne({where: {email}})
+      if (!user) {
+         throw ApiError.badRequest(`Пользователь с email: ${email} не найден `)
+      }
+      await mailService.sendResetPasswordMail(email, `${process.env.API_URL}/api/user/activate/${activationLink}`); //актуализировать роутинг
+   }
+
    async getAllUsers() {
       const users = await User.findAll()
       return users
