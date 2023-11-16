@@ -107,6 +107,10 @@ class UserController {
 
    async resetPassword(req, res, next) {
       try {
+         const errors = validationResult(req);
+         if (!errors.isEmpty()) {
+            return next(ApiError.badRequest('Ошибка при валидации', errors.array()))
+         }
          const {email} = req.body;
          await userService.resetPassword(email)
          return res.status(200).json({ message: 'Письмо для сброса пароля направлено на почту' });
@@ -117,6 +121,10 @@ class UserController {
 
    async updatePassword(req, res, next) {
       try {
+         const errors = validationResult(req);
+         if (!errors.isEmpty()) {
+            return next(ApiError.badRequest('Ошибка при валидации', errors.array()))
+         }
          const {password, activationLink} = req.body;
          await userService.updatePassword(password, activationLink)
          return res.status(200).json({ message: 'Пароль обновлен' });
