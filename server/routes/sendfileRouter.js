@@ -6,5 +6,6 @@ const path = require('path');
 
 router.get('/revit23', /*authMiddleware,*/ sendfileController.getR23);
 router.get('/testDownload', sendfileController.getTest);
+router.get('/download/:zipfolder', sendfileController.getZip)
 
 module.exports = router;
